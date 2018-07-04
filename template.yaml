@@ -1,0 +1,20 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
+Transform: AWS::Serverless-2016-10-31
+
+Globals:
+  Function:
+    CodeUri: src
+    Runtime: nodejs8.10
+
+Resources:
+  RedirectFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: index.redirect
+      Events:
+        Redirect:
+          Type: Api
+          Properties:
+            Path: /
+            Method: get
